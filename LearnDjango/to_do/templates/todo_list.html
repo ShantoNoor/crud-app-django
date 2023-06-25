@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>todo app</h1>
+<a href={% url 'to_do:to_do_create' %}><button>Create</button></a>
+
+{% for item in todo_list %}
+    <ul>
+        <a href="{% url 'to_do:to_do_update' pk=item.id %}">
+            <li>
+                {{item.title}} - {{item.status}}
+                - <a href="{% url 'to_do:to_do_delete' pk=item.id %}"><button>Delete</button></a>
+            </li>
+        </a>
+    </ul>
+{% endfor %}
+{% endblock body %}
